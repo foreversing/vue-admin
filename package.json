@@ -27,6 +27,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.4",
+    "svg-sprite-loader": "^5.0.0",
+    "svgo-loader": "^2.2.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.11"
   },
