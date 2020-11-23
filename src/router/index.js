@@ -3,27 +3,38 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Routes = [
-	{
-		path:'/',redirect: '/home'
+/**
+ * hidden: true 如果设置为真，项目将不会显示在侧边栏中(默认为假)
+ * */
+
+const Routes = [{
+		path: '/',
+		redirect: '/home'
 	},
 	{
-		path: '/home',
+		path: '/',
 		name: 'home',
-		component:()=> import('@/components/views/Home.vue')
+		component: resolve => require(['@/views/Home.vue'], resolve),
+		children: [{
+			path: '/contact',
+			component: resolve => require(['@/views/Contact.vue'], resolve),
+			meta: {
+				title: '系统首页',
+				auth: true
+			}
+		}]
 	},
 	{
-		path: '/contact',
-		name: 'contact',
-		component:()=> import('@/components/views/Contact.vue')
+		path: '/login',
+		component: resolve => require(['@/views/login/index'], resolve),
+		hidden: true
 	}
 ]
 
 const createRouter = () => new Router({
-	routes:Routes
+	routes: Routes
 })
 
 const router = createRouter()
 
 export default router;
-
